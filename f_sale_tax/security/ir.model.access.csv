@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+f_sale_tax_control_access_user,sale.tax.control,model_sale_tax_control,group_name_f_sale_tax_user, 1,0,0,0
+f_sale_tax_control_access_manager,sale.tax.control,model_sale_tax_control,group_name_f_sale_tax_manager, 1,1,1,1
+f_sale_tax_percentage_access_user,sale.tax.percentage,model_sale_tax_percentage,group_name_f_sale_tax_user, 1,0,0,0
+f_sale_tax_percentage_access_manager,sale.tax.percentage,model_sale_tax_percentage,group_name_f_sale_tax_manager, 1,1,1,1
+f_sale_tax_control_access_res_partner_sale_user,res.partner.sale.user,base.model_res_partner,group_name_f_sale_tax_user,1,0,0,0
+f_sale_tax_control_access_res_partner_sale_manager,res.partner.sale.manager,base.model_res_partner,group_name_f_sale_tax_manager,1,1,1,0
+
+

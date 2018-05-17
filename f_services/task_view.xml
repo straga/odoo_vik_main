@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+
+		<!-- buffer tree -->
+		<record id="view_tree_fs_task" model="ir.ui.view">
+			<field name="model">fs.task</field>
+	        <field name="arch" type="xml">
+	            <tree create="false">
+					<field name="partner_id"/>
+		            <field name="name"/>
+					<field name="due_date"/>
+	                <field name="repeat"/>
+					<field name="done"/>
+	            </tree>
+	        </field>
+		</record>
+		<!-- buffer form -->
+		<record id="view_form_fs_task" model="ir.ui.view">
+			<field name="model">fs.task</field>
+	        <field name="arch" type="xml">
+	            <form create="false">
+					 <header>
+
+						<field name="state" widget="statusbar" statusbar_visible="draft,done" statusbar_colors='{"done":"red","wait":"blue"}'/>
+					 </header>
+					<sheet>
+	                    <group>
+		            		<field name="name" attrs="{'readonly': [('state', '=', 'done')]}"/>
+							<field name="partner_id"/>
+							<field name="due_date" attrs="{'readonly': [('state', '=', 'done')]}"/>
+	                		<field name="repeat" attrs="{'readonly': [('state', '=', 'done')]}"/>
+							<field name="done" attrs="{'readonly': [('state', '=', 'done')]}"/>
+	                    </group>
+	                </sheet>
+	            </form>
+	        </field>
+		</record>
+
+
+
+			<!--	<act_window id="action_fs_task"
+							name="Task"
+							res_model="fs.task"
+							view_mode="tree,form" /> -->
+
+
+		<record id="view_fs_task_filter" model="ir.ui.view">
+            <field name="name">fs.task.select</field>
+            <field name="model">fs.task</field>
+            <field name="arch" type="xml">
+                <search string="Search Partner">
+					<filter string="Active Tasks" name="done" domain="[('done','=',0)]"/>
+
+
+                   <group expand="0" string="Group By">
+                       <filter string="Company" context="{'group_by': 'partner_id'}"/>
+                   </group>
+               </search>
+            </field>
+        </record>
+
+
+
+
+		<record id="action_fs_task" model="ir.actions.act_window">
+            <field name="name">Customers Tasks</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">fs.task</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+			<field name="context">{"search_default_done":1}</field>
+			<field name="search_view_id" ref="view_fs_task_filter"/>
+
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                How too create Task.
+              </p><p>
+                Go to Customer - > Custemer Tasks and add task.
+              </p>
+            </field>
+        </record>
+
+
+				
+
+
+				<menuitem	id="menu_customer_fs_task"
+							name="Customer Tasks"
+							sequence="3"
+							action="action_fs_task"
+							parent="base.menu_sales"
+							/>
+
+				<menuitem	id="menu_f_service"
+					name="Customers"
+					/>
+
+
+				<menuitem	id="menu_f_list"
+						name="Customers"
+						parent="menu_f_service"
+							 sequence="10"
+						/>
+
+		        <menuitem	id="menu_f_control"
+						name="Controls"
+						parent="menu_f_service"
+							 sequence="20"
+						/>
+				<menuitem	id="menu_f_taxes"
+							name="Taxes"
+							parent="f_services.menu_f_service"
+							 sequence="40"
+							/>
+
+				<menuitem	id="menu_f_configuration"
+							name="Configuration"
+							parent="menu_f_service"
+							 sequence="100"
+						/>
+
+				<menuitem	id="menu_fs_task"
+							name="Customer Tasks"
+							action="action_fs_task"
+							parent="menu_f_list"
+							/>
+
+			<record id="action_partner_form_f" model="ir.actions.act_window">
+            <field name="name">Customers</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="context">{"search_default_customer":1}</field>
+
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to add a contact in your address book.
+              </p><p>
+                Odoo helps you easily track all activities related to
+                a customer; discussions, history of business opportunities,
+                documents, etc.
+              </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_partner_form_f" parent="menu_f_list" action="action_partner_form_f" sequence="2"/>
+
+
+
+
+
+
+
+
+
+
+	</data>
+</openerp>

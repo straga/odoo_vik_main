@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<openerp>
+    <data >
+
+        <!-- sale level example noupdate="0" -->
+
+        <record id="res_extended_level_50" model="res.extended">
+            <field name="type_opt">level</field>
+            <field name="id_opt">50</field>
+            <field name="name">level_50</field>
+            <field name="value_opt">0</field>
+        </record>
+        <record id="res_extended_level_40" model="res.extended">
+            <field name="type_opt">level</field>
+            <field name="id_opt">40</field>
+            <field name="name">level_40</field>
+            <field name="value_opt">0</field>
+        </record>
+        <record id="res_extended_level_30" model="res.extended">
+            <field name="type_opt">level</field>
+            <field name="id_opt">30</field>
+            <field name="name">level_30</field>
+            <field name="value_opt">0</field>
+        </record>
+        <record id="res_extended_level_20" model="res.extended">
+            <field name="type_opt">level</field>
+            <field name="id_opt">20</field>
+            <field name="name">level_20</field>
+            <field name="value_opt">0</field>
+        </record>
+        <record id="res_extended_level_10" model="res.extended">
+            <field name="type_opt">level</field>
+            <field name="id_opt">10</field>
+            <field name="name">level_10</field>
+            <field name="value_opt">0</field>
+        </record>
+
+
+        <!-- purchase sale exmaple -->
+
+        <record id="res_extended_qty_30" model="res.extended">
+            <field name="type_opt">qty</field>
+            <field name="id_opt">30</field>
+            <field name="name">qty_30</field>
+            <field name="value_opt">10</field>
+        </record>
+        <record id="res_extended_qty_20" model="res.extended">
+            <field name="type_opt">qty</field>
+            <field name="id_opt">20</field>
+            <field name="name">qty_20</field>
+            <field name="value_opt">20</field>
+        </record>
+        <record id="res_extended_qty_10" model="res.extended">
+            <field name="type_opt">qty</field>
+            <field name="id_opt">10</field>
+            <field name="name">qty_10</field>
+            <field name="value_opt">30</field>
+        </record>
+
+
+    </data>
+</openerp>

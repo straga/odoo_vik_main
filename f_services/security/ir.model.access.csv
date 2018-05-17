@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+f_services_access_user,fs.task,model_fs_task,group_name_f_services_user, 1,1,0,0
+f_services_access_manager,fs.task,model_fs_task,group_name_f_services_manager, 1,1,1,1
+f_services_access_res_partner_sale_user,res.partner.sale.user,base.model_res_partner,group_name_f_services_user,1,0,0,0
+f_services_access_res_partner_sale_manager,res.partner.sale.manager,base.model_res_partner,group_name_f_services_manager,1,1,1,0
+
+

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+       <record id="db_backup_source_form_view" model="ir.ui.view">
+            <field name="name">yadisk.backup.connector.form</field>
+            <field name="model">db.backup.source</field>
+            <field name="inherit_id" ref="backup_manager.db_backup_source_form_view"/>
+            <field name="arch" type="xml">
+
+                <data>
+                     <xpath expr="//field[@name='db_backup_action_ids']/form//notebook[@string='External Connector']" position="inside">
+                         <page string ="Yadisk">
+
+                             <field name="yadisk_backup_connector_ids" nolabel="1" colspan="6" widget="one2many_list"  >
+                            <tree string="Yadisk">
+                                <field name="name"/>
+                                 <field name="yadisk_odoo_connector_id" completion="1" widget="selection" string="Yadisk Account" />
+
+                                <field name="yadisk_dir"/>
+                                <field name="days_save"/>
+                                <field name="active_backup"/>
+                            </tree>
+                            <form string="Yadisk">
+                                <group >
+                                    <group>
+                                        <field name="name" />
+                                        <field name="yadisk_dir"/>
+                                        <field name="yadisk_odoo_connector_id" completion="1" widget="selection" string="Yadisk Account" domain="[('active_disk','=', True)]"/>
+
+
+                                    </group>
+                                    <group>
+                                        <field name="days_save"/>
+                                        <field name="active_backup"/>
+
+                                    </group>
+                                </group>
+
+                            </form>
+                             </field>
+
+						</page>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+
+    <!-- Information for Inherit
+<field name="db_backup_action_ids" nolabel="1" colspan="6" widget="one2many_list"  >
+         <form string="Database Actions">
+             <notebook string="External Connector">
+    -->
+
+       <!-- Scheduler -->
+
+    <record forcecreate="True" id="ir_cron_scheduler_backup_yadisk_daily"
+            model="ir.cron">
+            <field name="name">BackUP Yadisk Daily</field>
+            <field eval="True" name="active" />
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall" />
+            <field eval="'yadisk.backup.connector'" name="model" />
+            <field eval="'daily_backup'" name="function" />
+            <field eval="'()'" name="args" />
+    </record>
+
+
+    <record forcecreate="True" id="ir_cron_scheduler_backup_daily_housekeeping"
+            model="ir.cron">
+            <field name="name">BackUP Yadisk Daily Housekeeping</field>
+            <field eval="True" name="active" />
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall" />
+            <field eval="'yadisk.backup.connector'" name="model" />
+            <field eval="'daily_housekeeping'" name="function" />
+            <field eval="'()'" name="args" />
+        </record>
+
+
+
+
+</data>
+</openerp>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+<t t-name="FieldMask">
+    <span t-att-class="'oe_form_field '+widget.widget_class" t-att-style="widget.node.attrs.style">
+        <t t-if="!widget.get('effective_readonly')">
+	        <input type="text"
+	            t-att-id="widget.id_for_label"
+	            t-att-tabindex="widget.node.attrs.tabindex"
+	            t-att-autofocus="widget.node.attrs.autofocus"
+	            t-att-placeholder="widget.node.attrs.placeholder"
+	        	t-att-maxlength="widget.field.size"
+				t-att-mask="widget.node.attrs.mask"
+	        />
+        </t>
+        <t t-if="widget.get('effective_readonly')">
+            <span class="oe_form_char_content"></span>
+        </t>
+    </span>
+</t>
+
+</templates> 

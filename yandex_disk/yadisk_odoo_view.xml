@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+
+
+    <record id="yadisk_odoo_connector_form_view" model="ir.ui.view">
+            <field name="name">yadisk.odoo.connector.form</field>
+            <field name="model">yadisk.odoo.connector</field>
+            <field name="arch" type="xml">
+
+                <form string="Yandex Disk Configure">
+                  <sheet>
+                      <div class="oe_right">
+                        <field name="yadisk_state" class="oe_inline" widget="kanban_state_selection" readonly="1"/>
+                    </div>
+
+                    <group col="4">
+                        <field name="name"/>
+                        <field name="sequence"/>
+                        <field name="active_disk"/>
+
+                    </group>
+
+                     <group string="Authentication" colspan="4">
+                        <field name="yadisk_user"/>
+                        <field name="yadisk_pass" password="True"/>
+                        <button name="test_yadisk_connection" type="object" string="Test Connection" icon="gtk-network"/>
+                    </group>
+
+                      <group col="4" string="Info">
+                        <field name="available"/>
+                        <field name="used"/>
+                     </group>
+
+                  </sheet>
+                </form>
+
+
+
+            </field>
+    </record>
+
+
+        <record id="action_yadisk_odoo_connector_form" model="ir.actions.act_window">
+            <field name="name">Yandex disk connector</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">yadisk.odoo.connector</field>
+            <field name="view_type">form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to start connect Yandex disk.
+              </p><p>
+                Hello Yandex Disk
+              </p>
+            </field>
+        </record>
+
+
+
+
+
+
+
+    <menuitem id="menu_custom_cloud" name="Cloud" parent="base.menu_administration" sequence="10" groups="base.group_no_one"/>
+
+    	<menuitem id="ya_disk"
+              name="Yandex Disk"
+              parent="menu_custom_cloud"
+              action="action_yadisk_odoo_connector_form"
+		 />
+
+
+
+
+
+
+
+</data>
+</openerp>

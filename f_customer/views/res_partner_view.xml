@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+
+
+        <record id="res_partner_f_customer_view_tab" model="ir.ui.view">
+            <field name="name">res.partner.f_customer.view.tab</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='internal_notes']" position="after">
+
+                    <page name="f_customer" string="Customer Info">
+                    <group>
+                        <group>
+                            <field name="tax_id_number"/>
+                            <field name="f_pin"/>
+                            <field name="f_owner"/>
+                            <field name="f_dob"/>
+                            <field name="f_routing"/>
+                            <field name="f_driver_lic"/>
+                            <field name="f_bussines_start"/>
+
+                        </group>
+
+                        <group>
+
+                            <field name="f_ssn"/>
+                            <field name="f_fns"/>
+                            <field name="f_bank"/>
+                            <field name="f_bank_acct"/>
+                            <field name="f_by_acct"/>
+                            <field name="f_ammount"/>
+                            <field name="f_qbooks"/>
+                        </group>
+
+                    </group>
+
+
+                    </page>
+
+                </xpath>
+            </field>
+        </record>
+
+                <!-- Partner -->
+        <record id="view_partner_tree_f_customer" model="ir.ui.view">
+            <field name="name">res.partner.tree</field>
+            <field name="model">res.partner</field>
+             <field name="inherit_id" ref="base.view_partner_tree" />
+            <field eval="8" name="priority"/>
+            <field name="arch" type="xml">
+
+
+                <xpath expr="//field[@name='parent_id']" position="before">
+                    <field name="tax_id_number"/>
+                    <field name="f_pin"/>
+                </xpath>
+
+
+                <xpath expr="//field[@name='phone']" position="before">
+                    <field name="street"/>
+                     <field name="street2"/>
+                    <field name="city"/>
+                    <field name="state_id"/>
+                    <field name="zip"/>
+                </xpath>
+
+                <xpath expr="//field[@name='phone']" position="after">
+
+                    <field name="f_owner"/>
+                    <field name="f_ssn"/>
+                    <field name="f_dob"/>
+                    <field name="f_driver_lic"/>
+                    <field name="f_bussines_start"/>
+                    <field name="f_fns"/>
+                    <field name="f_bank"/>
+                    <field name="f_routing"/>
+                    <field name="f_bank_acct"/>
+                    <field name="f_by_acct"/>
+                    <field name="f_ammount"/>
+                    <field name="f_qbooks"/>
+
+                </xpath>
+
+
+                <xpath expr="//field[@name='email']" position="replace">
+                    <field name="email" invisible="1"/>
+                </xpath>
+
+
+            </field>
+        </record>
+
+
+    </data>
+</openerp>
+

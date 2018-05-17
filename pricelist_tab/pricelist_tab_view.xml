@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+
+
+            <!-- view specific to product.template stock.view_template_property_form class="oe_highlight"-->
+        <record id="product_template_pricetab_only_form_view" model="ir.ui.view">
+            <field name="name">product.template.pricetab.product.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                  <xpath expr="/form/sheet/notebook" position="inside" >
+                <page string="Prices" >
+                    <group>
+                        <field name="id" invisible="1"/>
+                        <button colspan="2"
+                                name="%(action_product_mass_add_price)d"
+                                string="Add Price"
+                                type="action"
+                                icon="gtk-execute"
+                                class="oe_inline" />
+                    </group>
+                    <group>
+                        <label for="price_version_id" string="Filter: Price List Version"/>
+
+            <!--TODO for open -->
+                    <div >
+                        <field name="price_version_id" class="oe_inline" style="width: 60%% !important" context="{'product_id': active_id}"/>
+                        <button name="clean_version" string="Clear"  type="object"  class="oe_inline" attrs="{'invisible':[('price_version_id','=',False)]}"/>
+                    </div>
+         <!--   -->
+
+                    </group>
+
+
+
+
+
+
+                    <group colspan="2" col="2">
+                        <field name="prices_ids" nolabel="1"  widget="one2many_list" readonly="0" domain="[('price_version_id', '=', price_version_id.id)]">>
+                             <tree string="Price List">
+                                 <field name="sequence" />
+                                 <field name="name" />
+                                 <field name="price_version_id"/>
+                                 <field name="min_quantity"/>
+                                 <field name="price_surcharge"/>
+                                 <field name="base"/>
+                             </tree>
+                         </field>
+                    </group>
+                </page>
+            </xpath>
+
+            </field>
+        </record>
+
+
+
+   <!-- it for posible add price from product -->
+    <record id="price_versionid_form_view" model="ir.ui.view">
+        <field name="name">product.pricelist.item.form</field>
+        <field name="model">product.pricelist.item</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="product.product_pricelist_item_form_view" />
+        <field name="arch" type="xml">
+
+            <xpath expr="//separator[@string='Price Computation']" position="before">
+
+                <group col="4" string="Price version">
+                    <field name="price_version_id"/>
+                </group>
+
+            </xpath>
+        </field>
+    </record>
+
+</data>
+</openerp>
+

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!--   Product Price List -->
+
+        <record id="view_mass_add_price" model="ir.ui.view">
+            <field name="name">Add Price</field>
+            <field name="model">product.mass_add_price</field>
+            <field name="arch" type="xml">
+                <form string="Price List">
+                    <group string="Mass Add in Pricelist Version.">
+                        <field colspan="2" name="price_version_id"/>
+                        <field colspan="2" name="unit_type"/>
+                    </group>
+                    <footer>
+                        <button name="add_price" string="Add"  type="object" class="oe_highlight"  />
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window id="action_product_mass_add_price"
+                    name="Add Price List"
+                    res_model="product.mass_add_price"
+                    src_model="product.product"
+                    groups="product.group_sale_pricelist"
+                    view_mode="form" target="new" view_type="form" />
+    </data>
+</openerp>

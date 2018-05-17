@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+
+		<!-- buffer tree -->
+		<record id="view_tree_statement_control" model="ir.ui.view">
+			<field name="model">statement.control</field>
+	        <field name="arch" type="xml">
+	            <tree>
+					<field name="name"/>
+		            <field name="account"/>
+					<field name="year"/>
+					<field name="m_jan"/>
+					<field name="m_feb"/>
+					<field name="m_mar"/>
+					<field name="m_apr"/>
+					<field name="m_may"/>
+					<field name="m_jun"/>
+					<field name="m_jul"/>
+					<field name="m_aug"/>
+					<field name="m_sep"/>
+					<field name="m_oct"/>
+					<field name="m_nov"/>
+					<field name="m_dec"/>
+	            </tree>
+	        </field>
+		</record>
+		<!-- buffer form -->
+		<record id="view_form_statement_control" model="ir.ui.view">
+			<field name="model">statement.control</field>
+	        <field name="arch" type="xml">
+	            <form>
+					<sheet>
+	                    <group col="3">
+							<group>
+		  						<field name="name"/>
+							</group>
+							<group>
+								<field name="account"/>
+							</group>
+						</group>
+						<group col="3">
+							<group>
+							<field name="year"/>
+							<field name="check_image"/>
+							</group>
+						</group>
+						<group col="3">
+							<group>
+								<field name="m_jan"/>
+                                <field name="m_feb"/>
+								<field name="m_mar"/>
+								<field name="m_apr"/>
+								<field name="m_may"/>
+								<field name="m_jun"/>
+								<field name="m_jul"/>
+								<field name="m_aug"/>
+								<field name="m_sep"/>
+								<field name="m_oct"/>
+								<field name="m_nov"/>
+								<field name="m_dec"/>
+							</group>
+	                    </group>
+
+	                </sheet>
+	            </form>
+	        </field>
+		</record>
+
+
+		<record id="view_statement_control_filter" model="ir.ui.view">
+    <field name="name">statement.control.select</field>
+    <field name="model">statement.control</field>
+    <field name="arch" type="xml">
+        <search string="Search Form">
+			<field name="name"/>
+			<field name="year"/>
+            <field name="account"/>
+       </search>
+    </field>
+</record>
+
+
+
+
+
+
+
+
+		<record id="action_statement_control" model="ir.actions.act_window">
+            <field name="name">Statements Control</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">statement.control</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+
+        </record>
+
+
+				<menuitem	id="menu_statement_control"
+							name="Statements Control"
+							action="action_statement_control"
+							parent="f_services.menu_f_control"
+							/>
+
+
+
+
+	</data>
+</openerp>

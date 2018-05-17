@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+
+        <template id="assets_backend" name="stock assets mask ext" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/field_mask/static/src/css/mask.css"/>
+                <script type="text/javascript" src="/field_mask/static/src/js/widgets.js"></script>
+                <script type="text/javascript" src="/field_mask/static/src/lib/jquery.inputmask.bundle.js"></script>
+            </xpath>
+        </template>
+    </data>
+</openerp>

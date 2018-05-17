@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="smart_unit_view" model="ir.ui.view">
+            <field name="name">Smart unit</field>
+            <field name="model">smart.unit</field>
+            <field name="arch" type="xml">
+                <form string="List" version="7.0">
+                    <group string="Samrt">
+<!--
+                        <field colspan="2" name="price_version_id"/>
+                        <field colspan="2" name="unit_type"/>
+-->
+                    </group>
+                    <footer>
+                        <button name="add_unit_weight" string="Add"  type="object" class="oe_highlight"  />
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window id="action_add_unit_weight"
+                    name="Add Units Weight"
+                    res_model="smart.unit"
+                    src_model="sale.order.line"
+                    groups="product.group_uos"
+                    view_mode="form" target="new" view_type="form" />
+
+    </data>
+</openerp>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+
+		<!-- buffer tree -->
+		<record id="view_tree_license_control" model="ir.ui.view">
+			<field name="model">license.control</field>
+	        <field name="arch" type="xml">
+	            <tree>
+
+					<field name="office"/>
+					<field name="name"/>
+					<field name="city"/>
+					<field name="year"/>
+
+					<field name="state_cigarette"/>
+					<field name="state_milk"/>
+					<field name="state_weight"/>
+
+					<field name="city_food"/>
+                    <field name="city_milk"/>
+					<field name="city_cigar"/>
+					<field name="city_alarm"/>
+					<field name="city_ice"/>
+					<field name="city_fire_permit"/>
+					<field name="health_dept"/>
+					<field name="cco"/>
+					<field name="waste_permit"/>
+
+	            </tree>
+	        </field>
+		</record>
+		<!-- buffer form -->
+		<record id="view_form_license_control" model="ir.ui.view">
+			<field name="model">license.control</field>
+	        <field name="arch" type="xml">
+	            <form>
+					<sheet>
+	                    <group col="2">
+							<group>
+		  						<field name="office"/>
+							</group>
+							<group>
+								<field name="name"/>
+							</group>
+							<group>
+								<field name="city"/>
+							</group>
+							<group>
+								<field name="year"/>
+							</group>
+
+						</group>
+						<group >
+							<group>
+								<field name="state_cigarette"/>
+								<field name="state_milk"/>
+								<field name="state_weight"/>
+								<field name="city_food"/>
+                                <field name="city_milk"/>
+								<field name="city_cigar"/>
+								<field name="city_alarm"/>
+								<field name="city_ice"/>
+								<field name="city_fire_permit"/>
+								<field name="health_dept"/>
+								<field name="cco"/>
+								<field name="waste_permit"/>
+
+							</group>
+	                    </group>
+
+	                </sheet>
+	            </form>
+	        </field>
+		</record>
+
+
+		<record id="view_license_control_filter" model="ir.ui.view">
+    <field name="name">license.control.select</field>
+    <field name="model">license.control</field>
+    <field name="arch" type="xml">
+        <search string="Search Form">
+			<field name="name"/>
+			<field name="year"/>
+			<field name="office"/>
+			<field name="city"/>
+
+       </search>
+    </field>
+</record>
+
+
+
+
+
+
+
+
+		<record id="action_license_control" model="ir.actions.act_window">
+            <field name="name">Licenses Control</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">license.control</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+
+        </record>
+
+
+				<menuitem	id="menu_license_control"
+							name="Licenses Control"
+							action="action_license_control"
+							parent="f_services.menu_f_control"
+							/>
+
+
+
+
+	</data>
+</openerp>

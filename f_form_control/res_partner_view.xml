@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+
+
+        <record id="res_partner_f_form_view_buttons" model="ir.ui.view">
+            <field name="name">res.partner.f_form.view.buttons</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="priority" eval="20"/>
+            <field name="groups_id" eval="[(4, ref('group_name_f_form_control_user'))]"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='internal_notes']" position="after">
+
+                    <page name="customer_form" string="Forms">
+
+                            <field name="id" invisible="1"/>
+                            <field name="f_form_ids" context="{'partner_id': active_id}" >
+
+                                <tree>
+                                <field name="year"/>
+					            <field name="quarter"/>
+		                        <field name="form_941"/>
+					            <field name="form_nj927"/>
+	                            <field name="form_wr30"/>
+					            <field name="form_sales_tax"/>
+					            <field name="form_newark"/>
+                                </tree>
+
+                            </field>
+
+                    </page>
+
+                </xpath>
+            </field>
+        </record>
+
+
+    </data>
+</openerp>
+

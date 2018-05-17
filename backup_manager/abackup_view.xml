@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+
+    <!-- BackUP Source -->
+
+    <record id="db_backup_source_form_view" model="ir.ui.view">
+            <field name="name">db.backup.source.form</field>
+            <field name="model">db.backup.source</field>
+            <field name="arch" type="xml">
+
+                <form string="BackUP Configure">
+                  <sheet>
+                      <div class="oe_right">
+                            <field name="dbs_state" class="oe_inline" widget="kanban_state_selection" readonly="1"/>
+                      </div>
+                    <group col="4">
+  					    <field name="host" colspan="2"/>
+					    <field name="name" />
+					    <field name="port" />
+                        <button name="test_dbs_connection" type="object" string="Get DB List for BackUP" icon="gtk-network"/>
+                    </group>
+                      <group string="Global Odoo Server Authentication" colspan="4">
+                        <field name="admin_passwd" password="True" />
+                    </group>
+                      <group string="Localization">
+                          <field name="tz"/>
+                      </group>
+                    <group>
+                        <field name="db_backup_action_ids" nolabel="1" colspan="6" widget="one2many_list"  >
+                            <tree string="Database Actions">
+                                <field name="name"/>
+                                <field name="db_list_id" completion="1" widget="selection" string="DB name"/>
+                                <field name="db_dir_path_id" completion="1" widget="selection" string="Dir Path"/>
+                                <field name="days_save"/>
+                                <field name="sequence"/>
+                                <field name="active_backup"/>
+                            </tree>
+                            <form string="Database Actions">
+                                <group >
+                                    <group>
+                                        <field name="name" />
+                                        <field name="db_list_id" completion="1" widget="selection" string="DB name" domain="[('db_backup_source_id','=', parent.id)]"/>
+                                        <field name="db_dir_path_id" completion="1" widget="selection" string="Dir Path"/>
+
+                                    </group>
+                                    <group>
+                                        <field name="days_save"/>
+                                        <field name="sequence"/>
+                                        <field name="active_backup"/>
+                                    </group>
+                                </group>
+                                <notebook string="External Connector">
+
+					            </notebook>
+
+                            </form>
+                        </field>
+                    </group>
+                  </sheet>
+                </form>
+            </field>
+    </record>
+
+
+        <record id="action_db_backup_source_form" model="ir.actions.act_window">
+            <field name="name">Database Servers</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">db.backup.source</field>
+            <field name="view_type">form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to start configure BackUP.
+              </p><p>
+                Make BackUP Easy
+              </p>
+            </field>
+        </record>
+
+
+
+    <menuitem id="menu_custom_abackup" name="Backup" parent="base.menu_administration" sequence="10" groups="base.group_no_one"/>
+
+    	<menuitem id="menu_db_backup_source"
+              name="DataBase Servers"
+              parent="menu_custom_abackup"
+              action="action_db_backup_source_form"
+		 />
+
+    <!-- Directory Path -->
+
+    <record id="db_dir_path_form_view" model="ir.ui.view">
+            <field name="name">db.dir.path.form</field>
+            <field name="model">db.dir.path</field>
+            <field name="arch" type="xml">
+
+                <form string="BackUP Directory Path Configure">
+                  <sheet>
+                    <group col="2">
+					    <field name="name" />
+					    <field name="path" />
+                        <button name="test_path" type="object" string="Check Availability" icon="gtk-network"/>
+                    </group>
+                  </sheet>
+                </form>
+
+
+
+            </field>
+    </record>
+
+        <record id="db_dir_path_tree" model="ir.ui.view">
+            <field name="name">db.dir.path.tree</field>
+            <field name="model">db.dir.path</field>
+            <field name="arch" type="xml">
+                 <tree string="BackUP Directory Path Configure">
+                     <field name="name" />
+                     <field name="path" />
+                 </tree>
+            </field>
+        </record>
+
+
+
+    <record id="action_db_dir_path_form" model="ir.actions.act_window">
+            <field name="name">Directory path</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">db.dir.path</field>
+            <field name="view_type">form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to start configure local directory for BackUP.
+              </p><p>
+                Make BackUP Easy
+              </p>
+            </field>
+    </record>
+
+
+        	<menuitem id="menu_db_dir_path"
+              name="BackUP Directories"
+              parent="menu_custom_abackup"
+              action="action_db_dir_path_form"
+		 />
+
+
+   <!-- Scheduler -->
+
+    <record forcecreate="True" id="ir_cron_scheduler_backup_daily"
+            model="ir.cron">
+            <field name="name">BackUP Daily</field>
+            <field eval="True" name="active" />
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall" />
+            <field eval="'db.backup.action'" name="model" />
+            <field eval="'daily_backup'" name="function" />
+            <field eval="'()'" name="args" />
+    </record>
+
+        <record forcecreate="True" id="ir_cron_scheduler_backup_daily_housekeeping"
+            model="ir.cron">
+            <field name="name">BackUP Daily Housekeeping</field>
+            <field eval="True" name="active" />
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall" />
+            <field eval="'db.backup.action'" name="model" />
+            <field eval="'daily_housekeeping'" name="function" />
+            <field eval="'()'" name="args" />
+        </record>
+
+
+</data>
+</openerp>

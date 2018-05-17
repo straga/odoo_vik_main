@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+    <record forcecreate="True" id="ir_cron_scheduler_check_deadline"
+            model="ir.cron">
+            <field name="name">check deadline</field>
+            <field eval="True" name="active" />
+            <field name="interval_number">2</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall" />
+            <field eval="'project.task'" name="model" />
+            <field eval="'check_deadline'" name="function" />
+            <field eval="'()'" name="args" />
+    </record>
+
+
+    <!--<record id="view_color_project_task_inherit" model="ir.ui.view">-->
+            <!--<field name="name">project.task.color.form</field>-->
+            <!--<field name="model">project.task</field>-->
+            <!--<field name="inherit_id" ref="project.view_task_form2"/>-->
+            <!--<field name="arch" type="xml">-->
+
+                    <!--<field name="name" position="after">-->
+                        <!--<field name="color" invisible="1"/>-->
+                    <!--</field>-->
+
+            <!--</field>-->
+        <!--</record>-->
+
+
+
+
+</data>
+</openerp>

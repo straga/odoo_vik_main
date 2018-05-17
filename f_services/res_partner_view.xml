@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+
+
+        <record id="res_partner_f_task_view_buttons" model="ir.ui.view">
+            <field name="name">res.partner.f_task.view.buttons</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="priority" eval="20"/>
+            <field name="groups_id" eval="[(4, ref('group_name_f_services_user'))]"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='internal_notes']" position="after">
+
+                    <page name="cuatomer_tasks" string="Customer Tasks">
+
+                        <field name="id" invisible="1"/>
+                        <field name="f_task_ids" context="{'partner_id': active_id}" >
+
+                            <tree string="Tasks" >
+                                <field name="name"/>
+                                <field name="due_date"/>
+                                <field name="repeat"/>
+                                <field name="done"/>
+                            </tree>
+
+                            <form >
+                             <header>
+                                <field name="state" widget="statusbar" statusbar_visible="draft,done" statusbar_colors='{"done":"red","wait":"blue"}'/>
+                             </header>
+                            <sheet>
+                                <group>
+                                    <field name="name" attrs="{'readonly': [('state', '=', 'done')]}"/>
+                                    <field name="partner_id"/>
+                                    <field name="due_date" attrs="{'readonly': [('state', '=', 'done')]}"/>
+                                    <field name="repeat" attrs="{'readonly': [('state', '=', 'done')]}"/>
+                                    <field name="done" attrs="{'readonly': [('state', '=', 'done')]}"/>
+                                </group>
+                            </sheet>
+                            </form>
+
+
+                        </field>
+
+                    </page>
+
+
+                </xpath>
+            </field>
+        </record>
+
+
+    </data>
+</openerp>
+

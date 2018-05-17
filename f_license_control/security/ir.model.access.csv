@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+f_license_control_access_user,license.control,model_license_control,group_name_f_license_control_user, 1,0,0,0
+f_license_control_access_manager,license.control,model_license_control,group_name_f_license_control_manager, 1,1,1,1
+f_license_control_access_res_partner_sale_user,res.partner.sale.user,base.model_res_partner,group_name_f_license_control_user,1,0,0,0
+f_license_control_access_res_partner_sale_manager,res.partner.sale.manager,base.model_res_partner,group_name_f_license_control_manager,1,1,1,0
+
+

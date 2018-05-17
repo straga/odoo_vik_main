@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+
+		<!-- tree -->
+		<record id="view_tree_sale_tax_control" model="ir.ui.view">
+			<field name="model">sale.tax.control</field>
+	        <field name="arch" type="xml">
+	            <tree>
+
+					<field name="name"/>
+
+
+					<field name="year"/>
+					<field name="quarter"/>
+
+					<field name="code"/>
+					<field name="account"/>
+
+					<field name="gross_sales"/>
+					<field name="deductions"/>
+					<field name="balance_subject_to_tax"/>
+                    <field name="sales_tax_due"/>
+
+	            </tree>
+	        </field>
+		</record>
+		<!-- form -->
+		<record id="view_form_sale_tax_control" model="ir.ui.view">
+			<field name="model">sale.tax.control</field>
+	        <field name="arch" type="xml">
+	            <form>
+					<sheet>
+	                    <group>
+							<group>
+		  						<field name="name"/>
+								<field name="year"/>
+							</group>
+							<group>
+								<field name="quarter"/>
+								<field name="sales_tax_percentage"/>
+							</group>
+						</group>
+						<group >
+							<group>
+								<field name="account"/>
+								<field name="code"/>
+								<field name="gross_sales"/>
+                                <field name="balance_subject_to_tax"/>
+							</group>
+							<group>
+								<field name="deductions"/>
+								<field name="sales_tax_due"/>
+
+							</group>
+
+	                    </group>
+
+	                </sheet>
+	            </form>
+	        </field>
+		</record>
+
+
+		<record id="view_sale_tax_control_filter" model="ir.ui.view">
+			<field name="name">sale.tax.control.select</field>
+			<field name="model">sale.tax.control</field>
+			<field name="arch" type="xml">
+				<search string="Search Form">
+					<field name="name"/>
+					<field name="year"/>
+					<field name="quarter"/>
+					<field name="code"/>
+					<filter string="Year 2015" name="year2015" domain="[('year','=',2015)]"/>
+					<filter string="Year 2016" name="year2016" domain="[('year','=',2016)]"/>
+					<filter string="Year 2017" name="year2017" domain="[('year','=',2017)]"/>
+					<filter string="Year 2018" name="year2018" domain="[('year','=',2018)]"/>
+					<filter string="Year 2019" name="year2019" domain="[('year','=',2019)]"/>
+					<filter string="Year 2020" name="year2020" domain="[('year','=',2020)]"/>
+					<separator/>
+					<filter string="Quarter 1th" name="quarter1th" domain="[('quarter','=',1)]"/>
+					<filter string="Quarter 2nd" name="quarter2th" domain="[('quarter','=',2)]"/>
+					<filter string="Quarter 3rd" name="quarter3th" domain="[('quarter','=',3)]"/>
+					<filter string="Quarter 4th" name="quarter4th" domain="[('quarter','=',4)]"/>
+			   </search>
+			</field>
+		</record>
+
+
+
+		<record id="action_sale_tax_control" model="ir.actions.act_window">
+            <field name="name">Sales Taxes</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.tax.control</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+
+        </record>
+
+				<menuitem	id="menu_f_sale_tax"
+							name="Sales Taxes"
+							action="action_sale_tax_control"
+							parent="f_services.menu_f_taxes"
+							/>
+
+
+
+
+
+		<!-- tree -->
+		<record id="view_tree_sale_tax_percentage" model="ir.ui.view">
+			<field name="model">sale.tax.percentage</field>
+	        <field name="arch" type="xml">
+	            <tree>
+					<field name="name"/>
+					<field name="tax_percentage"/>
+	            </tree>
+	        </field>
+		</record>
+		<!-- form -->
+		<record id="view_form_sale_tax_percentage" model="ir.ui.view">
+			<field name="model">sale.tax.percentage</field>
+	        <field name="arch" type="xml">
+	            <form>
+					<sheet>
+	                    <group col="2">
+							<group>
+		  						<field name="name"/>
+							</group>
+							<group>
+								<field name="tax_percentage"/>
+							</group>
+						</group>
+	                </sheet>
+	            </form>
+	        </field>
+		</record>
+
+
+
+
+			<record id="action_sale_tax_percentage" model="ir.actions.act_window">
+            	<field name="name">Sale Taxe Percentage</field>
+            	<field name="type">ir.actions.act_window</field>
+            	<field name="res_model">sale.tax.percentage</field>
+            	<field name="view_type">form</field>
+            	<field name="view_mode">tree,form</field>
+
+        	</record>
+
+
+
+						<menuitem
+								id="menu_f_sale_tax_percentage"
+								name="Sale Tax %"
+								action="action_sale_tax_percentage"
+								parent="f_services.menu_f_configuration"
+							/>
+
+
+
+
+
+	</data>
+</openerp>

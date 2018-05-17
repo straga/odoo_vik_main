@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+
+		<!-- tree -->
+		<record id="view_tree_form_control" model="ir.ui.view">
+			<field name="model">form.control</field>
+	        <field name="arch" type="xml">
+	            <tree>
+								<field name="name"/>
+                                <field name="year"/>
+					            <field name="quarter"/>
+		                        <field name="form_941"/>
+					            <field name="form_nj927"/>
+	                            <field name="form_wr30"/>
+					            <field name="form_sales_tax"/>
+					            <field name="form_newark"/>
+
+	            </tree>
+	        </field>
+		</record>
+		<!-- form -->
+		<record id="view_form_form_control" model="ir.ui.view">
+			<field name="model">form.control</field>
+	        <field name="arch" type="xml">
+	            <form>
+					<sheet>
+						<group >
+							<group>
+								<field name="name" attrs="{'readonly':[('is_readonly','!=', False)]}"/>
+								<field name="year" attrs="{'readonly':[('is_readonly','!=', False)]}"/>
+								<field name="quarter" attrs="{'readonly':[('is_readonly','!=', False)]}"/>
+							</group>
+
+						</group>
+
+	                    <group >
+							<group>
+								<field name="is_readonly"/>
+							</group>
+
+						</group>
+
+						<group >
+							<group>
+								<field name="form_941"/>
+								<field name="form_nj927"/>
+								<field name="form_wr30"/>
+								<field name="form_sales_tax"/>
+								<field name="form_newark"/>
+							</group>
+	                    </group>
+	                </sheet>
+	            </form>
+	        </field>
+		</record>
+
+
+		<record id="view_form_control_filter" model="ir.ui.view">
+			<field name="name">form.control.select</field>
+			<field name="model">form.control</field>
+			<field name="arch" type="xml">
+				<search string="Search Form">
+					<field name="year"/>
+					<field name="quarter"/>
+
+					<filter string="Year 2015" name="year2015" domain="[('year','=',2015)]"/>
+					<filter string="Year 2016" name="year2016" domain="[('year','=',2016)]"/>
+					<filter string="Year 2017" name="year2017" domain="[('year','=',2017)]"/>
+					<filter string="Year 2018" name="year2018" domain="[('year','=',2018)]"/>
+					<filter string="Year 2019" name="year2019" domain="[('year','=',2019)]"/>
+					<filter string="Year 2020" name="year2020" domain="[('year','=',2020)]"/>
+					<separator/>
+					<filter string="Quarter 1th" name="quarter1th" domain="[('quarter','=',1)]"/>
+					<filter string="Quarter 2nd" name="quarter2th" domain="[('quarter','=',2)]"/>
+					<filter string="Quarter 3rd" name="quarter3th" domain="[('quarter','=',3)]"/>
+					<filter string="Quarter 4th" name="quarter4th" domain="[('quarter','=',4)]"/>
+
+
+			   </search>
+			</field>
+		</record>
+
+
+		<record id="action_form_control" model="ir.actions.act_window">
+            <field name="name">Forms Control</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">form.control</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+			<field name="search_view_id" ref="view_form_control_filter"/>
+        </record>
+
+
+
+		<menuitem	id="menu_form_control"
+					 name="Forms Control"
+					 action="action_form_control"
+					 parent="f_services.menu_f_control"
+		/>
+
+
+
+
+	</data>
+</openerp>

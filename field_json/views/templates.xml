@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+
+        <template id="assets_backend" name="stock assets field json" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/field_json/static/src/css/json.css"/>
+                <script type="text/javascript" src="/field_json/static/src/js/widgets.js"></script>
+                <script type="text/javascript" src="/field_json/static/src/js/view_list.js"></script>
+                <script type="text/javascript" src="/field_json/static/src/js/main.js"></script>
+            </xpath>
+        </template>
+    </data>
+</openerp>

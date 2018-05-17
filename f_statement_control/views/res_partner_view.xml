@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+
+
+        <record id="res_partner_f_statement_view_buttons" model="ir.ui.view">
+            <field name="name">res.partner.f_statement.view.buttons</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="priority" eval="20"/>
+            <field name="groups_id" eval="[(4, ref('group_name_f_statement_control_user'))]"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='internal_notes']" position="after">
+
+                    <page name="statement_form" string="Statement">
+
+                            <field name="id" invisible="1"/>
+                                <field name="f_stat_ids" context="{'partner_id': active_id}" >
+                                    <tree>
+		                            <field name="account"/>
+					                <field name="year"/>
+					                <field name="m_jan"/>
+					                <field name="m_feb"/>
+					                <field name="m_mar"/>
+					                <field name="m_apr"/>
+					                <field name="m_may"/>
+					                <field name="m_jun"/>
+					                <field name="m_jul"/>
+					                <field name="m_aug"/>
+					                <field name="m_sep"/>
+                                    <field name="m_oct"/>
+					                <field name="m_nov"/>
+					                <field name="m_dec"/>
+                </tree>
+                                </field>
+
+                    </page>
+
+                </xpath>
+            </field>
+        </record>
+
+
+    </data>
+</openerp>
+

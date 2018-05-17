@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+
+        <menuitem id="menu_sale_pricelist_tab_main" name="Pricelists Tab"
+            parent="base.menu_base_config" groups="product.group_sale_pricelist" sequence="70"/>
+
+        <menuitem id="menu_purchase_pricelist_tab_main" name="Pricelists Tab"
+            parent="base.menu_base_config" groups="product.group_purchase_pricelist" sequence="70"/>
+
+        <record id="plt_res_extended_form_view" model="ir.ui.view">
+            <field name="name">res.extended.form</field>
+            <field name="model">res.extended</field>
+            <field name="arch" type="xml">
+                 <form string="Ext. Config">
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="type_opt"/>
+
+                        </group>
+                        <group>
+                            <field name="id_opt"/>
+                            <field name="value_opt"/>
+
+                        </group>
+                    </group>
+                 </form>
+            </field>
+        </record>
+
+        <record id="plt_res_extended_form_tree_view" model="ir.ui.view">
+            <field name="name">res.extended.tree</field>
+            <field name="model">res.extended</field>
+            <field name="arch" type="xml">
+                <tree string="Ext. Config">
+                    <field name="name"/>
+                    <field name="type_opt"/>
+                    <field name="id_opt"/>
+                    <field name="value_opt"/>
+                </tree>
+
+            </field>
+        </record>
+
+        <record id="plt_res_extended_action" model="ir.actions.act_window">
+            <field name="name">Res.ext Config</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.extended</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="plt_res_extended_form_tree_view"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to add a ... .
+              </p><p>
+                There can be more than one version of a pricelist, each of
+                these must be valid during a certain period of time. Some
+                examples of versions: Main Prices, 2010, 2011, Summer Sales,
+                etc.
+              </p>
+            </field>
+        </record>
+
+        <menuitem
+            action="plt_res_extended_action" id="menu_purchase_res_extended_action"
+            parent="menu_purchase_pricelist_tab_main" sequence="2"/> <!-- Need add security -->
+
+        <menuitem
+            action="plt_res_extended_action" id="menu_sale_res_extended_action"
+            parent="menu_sale_pricelist_tab_main" sequence="2"/> <!-- Need add security -->
+
+
+
+
+<!--
+
+       <menuitem
+            action="pricelist_tab_res_extended_action1" id="menu_pricelist_tab_res_extended_action1"
+            parent="menu_product_pricelist_tab_main" sequence="1" groups="product.group_sale_pricelist"/>
+
+
+
+            <menuitem id="menu_res_extended_main" name="Ext. Config"
+            parent="menu_product_pricelist_main" groups="product.group_sale_pricelist" sequence="70"/>
+
+
+
+<record model="ir.ui.view" id="view_id">
+
+    <field name="name">view.name</field>
+    <field name="model">object_name</field>
+
+types: tree,form,calendar,search,graph,gantt,kanban
+    <field name="type">form</field>
+    <field name="priority" eval="16"/>
+    <field name="arch" type="xml">
+
+ view content: <form>, <tree>, <graph>, ...
+
+   </field>
+</record>
+-->
+
+</data>
+</openerp>

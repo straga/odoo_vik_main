@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+
+<!-- Bom Calc -->
+
+		<!-- tree -->
+		<record id="view_tree_bom_calc" model="ir.ui.view">
+			<field name="name">bom.calc.list</field>
+			<field name="model">bom.calc</field>
+	        <field name="arch" type="xml">
+	            <tree>
+					<field name="name" invisible="1"/>
+					<field name="product_id"/>
+					<field name="bom_id"/>
+	            </tree>
+	        </field>
+		</record>
+		<!-- form -->
+		<record id="view_form_bom_calc" model="ir.ui.view">
+			<field name="name">bom.calc.form</field>
+			<field name="model">bom.calc</field>
+	        <field name="arch" type="xml">
+	             <form string="BOM">
+	                <sheet>
+	                    <group >
+							<field name="name" invisible="1"/>
+							<field name="product_id"/>
+							<field name="bom_id" attrs="{'readonly':[('product_id', '=', False)]}" domain="['|',
+                                            ('product_id','=',product_id),
+                                            '&amp;',
+                                                ('product_tmpl_id.product_variant_ids','=',product_id),
+                                                ('product_id','=',False)]"/>
+
+
+							<field name="route_ids" widget="many2many_tags" /> <!-- many2many_tags many2many_checkboxes -->
+
+
+							<field name="product_tmp_id"/>
+
+							<field name="product_qty"/>
+							<field name="purch_qty" readonly="0"/>
+
+
+
+	                    </group>
+
+						<group>
+							<button name="get_ids_from_bom" string="Calc"  type="object" class="oe_highlight"  />
+						</group>
+
+						<group>
+							<field name="calc_line_ids" nolabel="1" />
+						</group>
+
+
+
+
+
+	                </sheet>
+	            </form>
+	        </field>
+		</record>
+
+
+
+            <act_window id="action_bom_calc"
+                        name="BOM Calc"
+                        res_model="bom.calc"
+                        view_mode="tree,form" />
+
+            <menuitem   id="menu_bom_calc"
+                        name="Manufacturing Calc"
+                        action="action_bom_calc"
+                        parent="mrp.menu_mrp_manufacturing"
+							/>
+
+<!-- Bom Calc Line <tree create="false" colors="blue:product_qty>1; #707070:purch_total>1000"> -->
+
+		<!-- tree -->
+		<record id="view_tree_bom_calc_line" model="ir.ui.view">
+			<field name="name">bom.calc.line.list</field>
+			<field name="model">bom.calc.line</field>
+	        <field name="arch" type="xml">
+	            <tree name='color_test' create="false">
+					<field name="seq_line" invisible="0" />
+					<field name="id_bom_line" invisible="1" />
+					<field name="id_parent" invisible="1" />
+
+					<field name="name"  />
+					<field name="purch_qty" sum="Qty. Total"/>
+					<field name="product_uom" />
+					<field name="purch_cost" />
+					<field name="purch_total" sum="SubTotal"/>
+
+
+					<field name="level" invisible="0"/>
+					<field name="is_calc" invisible="0"/>
+
+	            </tree>
+	        </field>
+		</record>
+
+
+
+	</data>
+</openerp>

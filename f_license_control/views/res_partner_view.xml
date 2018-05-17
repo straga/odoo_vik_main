@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+
+
+        <record id="res_partner_f_license_view_tab" model="ir.ui.view">
+            <field name="name">res.partner.f_license.view.tab</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="priority" eval="20"/>
+            <field name="groups_id" eval="[(4, ref('group_name_f_license_control_user'))]"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='internal_notes']" position="after">
+
+                    <page name="license_tab" string="Licenses">
+                        <field name="id" invisible="1"/>
+                            <field name="f_license_ids" context="{'partner_id': active_id}" >
+                                 <tree>
+
+                                    <field name="office"/>
+                                    <field name="year"/>
+
+                                    <field name="state_cigarette"/>
+                                    <field name="state_milk"/>
+                                    <field name="state_weight"/>
+
+                                    <field name="city_food"/>
+                                    <field name="city_milk"/>
+                                    <field name="city_cigar"/>
+                                    <field name="city_alarm"/>
+                                    <field name="city_ice"/>
+                                    <field name="city_fire_permit"/>
+                                    <field name="health_dept"/>
+                                    <field name="cco"/>
+                                    <field name="waste_permit"/>
+
+                                 </tree>
+
+                                <form>
+
+                                        <group col="2">
+                                            <group>
+                                                <field name="office"/>
+                                            </group>
+                                            <group>
+                                                <field name="city"/>
+                                            </group>
+                                            <group>
+                                                <field name="year"/>
+                                            </group>
+
+                                        </group>
+                                        <group >
+                                            <group>
+                                                <field name="state_cigarette"/>
+                                                <field name="state_milk"/>
+                                                <field name="state_weight"/>
+                                                <field name="city_food"/>
+                                                <field name="city_milk"/>
+                                                <field name="city_cigar"/>
+                                                <field name="city_alarm"/>
+                                                <field name="city_ice"/>
+                                                <field name="city_fire_permit"/>
+                                                <field name="health_dept"/>
+                                                <field name="cco"/>
+                                                <field name="waste_permit"/>
+
+                                            </group>
+                                        </group>
+
+                                 </form>
+
+                        </field>
+                    </page>
+
+                </xpath>
+            </field>
+        </record>
+
+
+    </data>
+</openerp>
+
