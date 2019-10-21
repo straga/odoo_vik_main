@@ -2,7 +2,7 @@
 {
     "name": """Web Widget Colorpicker""",
     "summary": """Added Color Picker for From""",
-    "category": "Project",
+    "category": "web",
     "images": ['static/description/icon.png'],
     "version": "13.19.10.21.0",
     "description": """
