@@ -3,9 +3,10 @@ odoo.define('web.web_widget_colorpicker', function(require) {
 
     var field_registry = require('web.field_registry');
     var Field = field_registry.get('char');
+    var AbstractField = require('web.AbstractField');
 
 
-    var FieldColorPicker = Field.extend({
+    var FieldColorPicker = AbstractField.extend({
 
         template: 'FieldColorPicker',
         widget_class: 'oe_form_field_color',
