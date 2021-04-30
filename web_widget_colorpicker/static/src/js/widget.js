@@ -23,7 +23,7 @@ odoo.define('web.web_widget_colorpicker', function(require) {
             var isOk = /^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/i.test(val);
 
             if (!isOk) {
-                    return 0;
+                    return '';
                 }
 
             return $input.val();
@@ -40,7 +40,8 @@ odoo.define('web.web_widget_colorpicker', function(require) {
                 this.$el.colorpicker({format: 'rgba'});
                 this.$input = $input;
 
-        }
+        },
+
 
     });
 

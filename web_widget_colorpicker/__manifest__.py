@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 {
     "name": """Web Widget Colorpicker""",
-    "summary": """Added Color Picker for Form""",
+    "summary": """Added Color Picker for From""",
     "category": "web",
     "images": ['static/description/icon.png'],
-    "version": "14.20.10.20",
+    "version": "14.21.04.21",
     "description": """
 
             For Form View - added = widget="colorpicker"
