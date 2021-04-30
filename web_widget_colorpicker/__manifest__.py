@@ -4,7 +4,7 @@
     "summary": """Added Color Picker for From""",
     "category": "web",
     "images": ['static/description/icon.png'],
-    "version": "13.20.01.16",
+    "version": "13.20.04.21",
     "description": """
 
             For Form View - added = widget="colorpicker"
