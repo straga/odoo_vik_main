@@ -4,7 +4,7 @@
     "summary": """Added Color Picker for From""",
     "category": "web",
     "images": ['static/description/icon.png'],
-    "version": "15.21.10.06.0",
+    "version": "14.21.04.21",
     "description": """
 
             For Form View - added = widget="colorpicker"
@@ -33,26 +33,10 @@
     ],
     "external_dependencies": {"python": [], "bin": []},
     "data": [
-        # 'view/web_widget_colorpicker_view.xml'
+        'view/web_widget_colorpicker_view.xml'
     ],
-
-    'assets': {
-
-        'web.assets_qweb': [
-            'web_widget_colorpicker/static/src/xml/*.xml',
-        ],
-
-        'web.assets_backend': [
-            '/web_widget_colorpicker/static/src/css/widget.css',
-            '/web_widget_colorpicker/static/src/lib/bootstrap-colorpicker/css/bootstrap-colorpicker.css',
-            '/web_widget_colorpicker/static/src/js/widget.js',
-            '/web_widget_colorpicker/static/src/lib/bootstrap-colorpicker/js/bootstrap-colorpicker.js'
-        ]
-    },
-
-
     "qweb": [
-        # 'static/src/xml/widget.xml',
+        'static/src/xml/widget.xml',
 
     ],
     "demo": [],
